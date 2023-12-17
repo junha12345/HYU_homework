@@ -1,0 +1,68 @@
+#include <cstdlib>
+#include <cstdio>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include "bank_account.hpp"
+#include "bank_account.cpp"
+using namespace std;
+
+int main(void) {
+    string command;
+    vector<BankAccount*> accounts; // 포인터로 저장해서 가볍게, 대신 iterator 필수
+    vector<BankAccount*>::iterator it;
+    bool quitEntered = false;
+    while (!quitEntered && getline(cin, command)) {
+        BankAccount* a;
+        string name;
+        string dummy;
+        unsigned int balance;
+        double interest_rate;
+        int n_years_later;
+        char op = command[0];
+        istringstream iss(command.substr(1));
+        switch (op) {
+        case 'C':
+            // name, type, balance, interest_rate : create account
+            // TODO
+            iss >> name >> dummy >> balance >> interest_rate;
+            break;
+        case 'D':
+            // name, delete the account whose account name is name
+            // TODO
+            iss >> name;
+            for (it = accounts.begin(); it != accounts.end(); ++it) {
+                if ((*it)->name() == name) {
+                }
+            }
+            break;
+        case 'P':
+            // print the name, amount, and interest rate of every current account as standard
+            // TODO
+            for (it = accounts.begin(); it != accounts.end(); ++it) {
+                cout << (*it)->name() << "     " << (*it)->type() << "     " << (*it)->balance() << "     " << (*it)->interest_rate() << endl;
+            }
+            break;
+        case 'A':
+            // print after yearse
+            // TODO
+            iss >> n_years_later;
+            for (it = accounts.begin(); it != accounts.end(); ++it) {
+                if ((*it)->type() == "checking") {
+                    cout << (*it)->name() << "     " << (*it)->type() << "     " << (*it)->compute_expected_balance(n_years_later) << "     " << (*it)->interest_rate() << endl;
+                }
+            }
+            break;
+        case 'Q':
+            // quit a program
+            // TODO
+            exit(1);
+            break;
+        default:
+            cerr << "Undefined command" << endl;
+            exit(1);
+        }
+    }
+}
+
