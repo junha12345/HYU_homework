@@ -5,7 +5,7 @@
 ## 제출 정보
 
 1. Github 저장소 URL:  https://github.com/junha12345/HYU_homework
-2. 마이링크(MyLink) URL:  https://github.com/junha12345/HYU_homework/tree/main/마이링크
+2. 마이링크(MyLink) URL:  https://github.com/junha12345/HYU_homework/tree/main
 
 ## 설명
 
